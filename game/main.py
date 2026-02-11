@@ -1,58 +1,58 @@
-import pybag
+import pygbag
 import os
 
 base_path = os.path.dirname(os.path.abspath(__file__))
 os.chdir(base_path)
 
-pybag.init()
-pybag.mixer.init()
+pygbag.init()
+pygbag.mixer.init()
 
 # Fenêtre du jeu
-pybag.display.set_caption("THE MAZE")
-screen = pybag.display.set_mode((1200, 800),pybag.RESIZABLE )
+pygbag.display.set_caption("THE MAZE")
+screen = pygbag.display.set_mode((1200, 800),pygbag.RESIZABLE )
 
 #Chargement effet sonore
-effet_clef = pybag.mixer.Sound('Musiques/effet_sonore_clef.wav')
+effet_clef = pygbag.mixer.Sound('Musiques/effet_sonore_clef.wav')
 
 # Chargement des images
-background = pybag.image.load("Images/background.png")
-background_2 = pybag.image.load("Images/background_2.png")
-play_button_menu = pybag.transform.scale(pybag.image.load('Images/start.PNG'), (250, 100))
-quit_button_menu = pybag.transform.scale(pybag.image.load('Images/exit.PNG'), (250, 100))
-levels_button_menu = pybag.transform.scale(pybag.image.load('Images/levels.PNG'), (250, 100))
+background = pygbag.image.load("Images/background.png")
+background_2 = pygbag.image.load("Images/background_2.png")
+play_button_menu = pygbag.transform.scale(pygbag.image.load('Images/start.PNG'), (250, 100))
+quit_button_menu = pygbag.transform.scale(pygbag.image.load('Images/exit.PNG'), (250, 100))
+levels_button_menu = pygbag.transform.scale(pygbag.image.load('Images/levels.PNG'), (250, 100))
 
-sprite_sol_1 = pybag.image.load("Images/sprite_sol.jpg")
-sprite_mur_1 = pybag.image.load("Images/sprite_mur.jpg")
-sprite_sol_2 = pybag.image.load("Images/sprite_sol_2.jpg")
-sprite_mur_2 = pybag.image.load("Images/sprite_mur_2.jpg")
-sprite_sol_3 = pybag.image.load("Images/sprite_sol_3.jpg")
-sprite_mur_3 = pybag.image.load("Images/sprite_mur_3.jpg")
-sprite_sol_4 = pybag.image.load("Images/sprite_sol_4.png")
-sprite_mur_4 = pybag.image.load("Images/sprite_mur_4.jpg")
-sprite_sol_5 = pybag.image.load("Images/sprite_sol_5.png")
-sprite_mur_5 = pybag.image.load("Images/sprite_mur_5.png")
+sprite_sol_1 = pygbag.image.load("Images/sprite_sol.jpg")
+sprite_mur_1 = pygbag.image.load("Images/sprite_mur.jpg")
+sprite_sol_2 = pygbag.image.load("Images/sprite_sol_2.jpg")
+sprite_mur_2 = pygbag.image.load("Images/sprite_mur_2.jpg")
+sprite_sol_3 = pygbag.image.load("Images/sprite_sol_3.jpg")
+sprite_mur_3 = pygbag.image.load("Images/sprite_mur_3.jpg")
+sprite_sol_4 = pygbag.image.load("Images/sprite_sol_4.png")
+sprite_mur_4 = pygbag.image.load("Images/sprite_mur_4.jpg")
+sprite_sol_5 = pygbag.image.load("Images/sprite_sol_5.png")
+sprite_mur_5 = pygbag.image.load("Images/sprite_mur_5.png")
 
-sprite_porte = pybag.transform.scale(pybag.image.load("Images/sprite_porte.png"), (50, 50))
-sprite_clef = pybag.transform.scale(pybag.image.load("Images/sprite_clef.png"), (50, 50))
+sprite_porte = pygbag.transform.scale(pygbag.image.load("Images/sprite_porte.png"), (50, 50))
+sprite_clef = pygbag.transform.scale(pygbag.image.load("Images/sprite_clef.png"), (50, 50))
 
 # Chargement des images du personnage pour les animations
-perso_face = [pybag.transform.scale(pybag.image.load(f"Images/perso_face.png"), (40, 40)) for i in range(1, 4)]
-perso_face_marche = [pybag.transform.scale(pybag.image.load(f"Images/perso_face_marche.png"), (40, 40)) for i in range(1, 4)]
-perso_face_marche2 = [pybag.transform.scale(pybag.image.load(f"Images/perso_face_marche2.png"), (40, 40)) for i in range(1, 4)]
+perso_face = [pygbag.transform.scale(pygbag.image.load(f"Images/perso_face.png"), (40, 40)) for i in range(1, 4)]
+perso_face_marche = [pygbag.transform.scale(pygbag.image.load(f"Images/perso_face_marche.png"), (40, 40)) for i in range(1, 4)]
+perso_face_marche2 = [pygbag.transform.scale(pygbag.image.load(f"Images/perso_face_marche2.png"), (40, 40)) for i in range(1, 4)]
 
-perso_dos = [pybag.transform.scale(pybag.image.load(f"Images/perso_dos.png"), (40, 40)) for i in range(1, 4)]
-perso_dos_marche = [pybag.transform.scale(pybag.image.load(f"Images/perso_dos_marche.png"), (40, 40)) for i in range(1, 4)]
-perso_dos_marche2 = [pybag.transform.scale(pybag.image.load(f"Images/perso_dos_marche2.png"), (40, 40)) for i in range(1, 4)]
+perso_dos = [pygbag.transform.scale(pygbag.image.load(f"Images/perso_dos.png"), (40, 40)) for i in range(1, 4)]
+perso_dos_marche = [pygbag.transform.scale(pygbag.image.load(f"Images/perso_dos_marche.png"), (40, 40)) for i in range(1, 4)]
+perso_dos_marche2 = [pygbag.transform.scale(pygbag.image.load(f"Images/perso_dos_marche2.png"), (40, 40)) for i in range(1, 4)]
 
-perso_profil_droit = [pybag.transform.scale(pybag.image.load(f"Images/perso_profil_droit.png"), (40, 40)) for i in range(1, 4)]
-perso_profil_droit_marche = [pybag.transform.scale(pybag.image.load(f"Images/perso_profil_droit_marche.png"), (40, 40)) for i in range(1, 4)]
-perso_profil_droit_marche2 = [pybag.transform.scale(pybag.image.load(f"Images/perso_profil_droit_marche2.png"), (40, 40)) for i in range(1, 4)]
+perso_profil_droit = [pygbag.transform.scale(pygbag.image.load(f"Images/perso_profil_droit.png"), (40, 40)) for i in range(1, 4)]
+perso_profil_droit_marche = [pygbag.transform.scale(pygbag.image.load(f"Images/perso_profil_droit_marche.png"), (40, 40)) for i in range(1, 4)]
+perso_profil_droit_marche2 = [pygbag.transform.scale(pygbag.image.load(f"Images/perso_profil_droit_marche2.png"), (40, 40)) for i in range(1, 4)]
 
-perso_profil_gauche = [pybag.transform.scale(pybag.image.load(f"Images/perso_profil_gauche.png"), (40, 40)) for i in range(1, 4)]
-perso_profil_gauche_marche = [pybag.transform.scale(pybag.image.load(f"Images/perso_profil_gauche_marche.png"), (40, 40)) for i in range(1, 4)]
-perso_profil_gauche_marche2 = [pybag.transform.scale(pybag.image.load(f"Images/perso_profil_gauche_marche2.png"), (40, 40)) for i in range(1, 4)]
+perso_profil_gauche = [pygbag.transform.scale(pygbag.image.load(f"Images/perso_profil_gauche.png"), (40, 40)) for i in range(1, 4)]
+perso_profil_gauche_marche = [pygbag.transform.scale(pygbag.image.load(f"Images/perso_profil_gauche_marche.png"), (40, 40)) for i in range(1, 4)]
+perso_profil_gauche_marche2 = [pygbag.transform.scale(pygbag.image.load(f"Images/perso_profil_gauche_marche2.png"), (40, 40)) for i in range(1, 4)]
 
-personnage_image = pybag.transform.scale(pybag.image.load("Images/perso_face.png"), (40, 40))
+personnage_image = pygbag.transform.scale(pygbag.image.load("Images/perso_face.png"), (40, 40))
 
 #Chargement des images des boutons
 play_button_rect = play_button_menu.get_rect(center=(260, 160))
@@ -60,12 +60,12 @@ levels_button_rect = levels_button_menu.get_rect(center=(260, 300))
 quit_button_rect = quit_button_menu.get_rect(center=(260, 440))
 
 
-niveau1_button_image = pybag.transform.scale(pybag.image.load('Images/level1.png'), (250, 100))
-niveau2_button_image = pybag.transform.scale(pybag.image.load('Images/level2.png'), (250, 100))
-niveau3_button_image = pybag.transform.scale(pybag.image.load('Images/level3.png'), (250, 100))
-niveau4_button_image = pybag.transform.scale(pybag.image.load('Images/level4.png'), (250, 100))
-niveau5_button_image = pybag.transform.scale(pybag.image.load('Images/level5.png'), (250, 100))
-retour_menu_button_image = pybag.transform.scale(pybag.image.load('Images/retour_menu.png'), (250, 100))
+niveau1_button_image = pygbag.transform.scale(pygbag.image.load('Images/level1.png'), (250, 100))
+niveau2_button_image = pygbag.transform.scale(pygbag.image.load('Images/level2.png'), (250, 100))
+niveau3_button_image = pygbag.transform.scale(pygbag.image.load('Images/level3.png'), (250, 100))
+niveau4_button_image = pygbag.transform.scale(pygbag.image.load('Images/level4.png'), (250, 100))
+niveau5_button_image = pygbag.transform.scale(pygbag.image.load('Images/level5.png'), (250, 100))
+retour_menu_button_image = pygbag.transform.scale(pygbag.image.load('Images/retour_menu.png'), (250, 100))
 
 niveau1_button_rect = niveau1_button_image.get_rect(center=(575, 300))
 niveau2_button_rect = niveau2_button_image.get_rect(center=(575, 400))
@@ -77,7 +77,7 @@ retour_menu_button_rect = retour_menu_button_image.get_rect(center=(200, 700))
 # Variables du jeu
 case_size = 50
 vitesse = 10  # Vitesse du personnage
-clock = pybag.time.Clock()
+clock = pygbag.time.Clock()
 
 # Définition des labyrinthes
 def charger_labyrinthe(niveau):
@@ -190,28 +190,28 @@ def dessiner_labyrinthe(lab, niveau):
             if case == "1":
                 # Dessiner les murs
                 if niveau == 1:
-                    screen.blit(pybag.transform.scale(sprite_mur_1, (case_size, case_size)), (x * case_size, y * case_size))
+                    screen.blit(pygbag.transform.scale(sprite_mur_1, (case_size, case_size)), (x * case_size, y * case_size))
                 elif niveau == 2:
-                    screen.blit(pybag.transform.scale(sprite_mur_2, (case_size, case_size)), (x * case_size, y * case_size))
+                    screen.blit(pygbag.transform.scale(sprite_mur_2, (case_size, case_size)), (x * case_size, y * case_size))
                 elif niveau == 3:
-                    screen.blit(pybag.transform.scale(sprite_mur_3, (case_size, case_size)), (x * case_size, y * case_size))
+                    screen.blit(pygbag.transform.scale(sprite_mur_3, (case_size, case_size)), (x * case_size, y * case_size))
                 elif niveau == 4:
-                    screen.blit(pybag.transform.scale(sprite_mur_4, (case_size, case_size)), (x * case_size, y * case_size))
+                    screen.blit(pygbag.transform.scale(sprite_mur_4, (case_size, case_size)), (x * case_size, y * case_size))
                 elif niveau == 5:
-                    screen.blit(pybag.transform.scale(sprite_mur_5, (case_size, case_size)), (x * case_size, y * case_size))
+                    screen.blit(pygbag.transform.scale(sprite_mur_5, (case_size, case_size)), (x * case_size, y * case_size))
 
             elif case == "0":
                 # Dessiner le sol
                 if niveau == 1:
-                    screen.blit(pybag.transform.scale(sprite_sol_1, (case_size, case_size)), (x * case_size, y * case_size))
+                    screen.blit(pygbag.transform.scale(sprite_sol_1, (case_size, case_size)), (x * case_size, y * case_size))
                 elif niveau == 2:
-                    screen.blit(pybag.transform.scale(sprite_sol_2, (case_size, case_size)), (x * case_size, y * case_size))
+                    screen.blit(pygbag.transform.scale(sprite_sol_2, (case_size, case_size)), (x * case_size, y * case_size))
                 elif niveau == 3:
-                    screen.blit(pybag.transform.scale(sprite_sol_3, (case_size, case_size)), (x * case_size, y * case_size))
+                    screen.blit(pygbag.transform.scale(sprite_sol_3, (case_size, case_size)), (x * case_size, y * case_size))
                 elif niveau == 4:
-                    screen.blit(pybag.transform.scale(sprite_sol_4, (case_size, case_size)), (x * case_size, y * case_size))
+                    screen.blit(pygbag.transform.scale(sprite_sol_4, (case_size, case_size)), (x * case_size, y * case_size))
                 elif niveau == 5:
-                    screen.blit(pybag.transform.scale(sprite_sol_5, (case_size, case_size)), (x * case_size, y * case_size))
+                    screen.blit(pygbag.transform.scale(sprite_sol_5, (case_size, case_size)), (x * case_size, y * case_size))
 
             elif case == "2":
                 # Dessiner la porte sur le sol
@@ -219,15 +219,15 @@ def dessiner_labyrinthe(lab, niveau):
 
                 # D'abord, dessiner le sol sous la porte
                 if niveau == 1:
-                    screen.blit(pybag.transform.scale(sprite_sol_1, (case_size, case_size)), (x * case_size, y * case_size))
+                    screen.blit(pygbag.transform.scale(sprite_sol_1, (case_size, case_size)), (x * case_size, y * case_size))
                 elif niveau == 2:
-                    screen.blit(pybag.transform.scale(sprite_sol_2, (case_size, case_size)), (x * case_size, y * case_size))
+                    screen.blit(pygbag.transform.scale(sprite_sol_2, (case_size, case_size)), (x * case_size, y * case_size))
                 elif niveau == 3:
-                    screen.blit(pybag.transform.scale(sprite_sol_3, (case_size, case_size)), (x * case_size, y * case_size))
+                    screen.blit(pygbag.transform.scale(sprite_sol_3, (case_size, case_size)), (x * case_size, y * case_size))
                 elif niveau == 4:
-                    screen.blit(pybag.transform.scale(sprite_sol_4, (case_size, case_size)), (x * case_size, y * case_size))
+                    screen.blit(pygbag.transform.scale(sprite_sol_4, (case_size, case_size)), (x * case_size, y * case_size))
                 elif niveau == 5:
-                    screen.blit(pybag.transform.scale(sprite_sol_5, (case_size, case_size)), (x * case_size, y * case_size))
+                    screen.blit(pygbag.transform.scale(sprite_sol_5, (case_size, case_size)), (x * case_size, y * case_size))
 
                 # Ensuite, dessiner la porte
                 screen.blit(sprite_porte, (x * case_size, y * case_size))
@@ -240,15 +240,15 @@ def dessiner_labyrinthe(lab, niveau):
 
                 # D'abord, dessiner la clef sous la porte
                 if niveau == 1:
-                    screen.blit(pybag.transform.scale(sprite_sol_1, (case_size, case_size)), (x * case_size, y * case_size))
+                    screen.blit(pygbag.transform.scale(sprite_sol_1, (case_size, case_size)), (x * case_size, y * case_size))
                 elif niveau == 2:
-                    screen.blit(pybag.transform.scale(sprite_sol_2, (case_size, case_size)), (x * case_size, y * case_size))
+                    screen.blit(pygbag.transform.scale(sprite_sol_2, (case_size, case_size)), (x * case_size, y * case_size))
                 elif niveau == 3:
-                    screen.blit(pybag.transform.scale(sprite_sol_3, (case_size, case_size)), (x * case_size, y * case_size))
+                    screen.blit(pygbag.transform.scale(sprite_sol_3, (case_size, case_size)), (x * case_size, y * case_size))
                 elif niveau == 4:
-                    screen.blit(pybag.transform.scale(sprite_sol_4, (case_size, case_size)), (x * case_size, y * case_size))
+                    screen.blit(pygbag.transform.scale(sprite_sol_4, (case_size, case_size)), (x * case_size, y * case_size))
                 elif niveau == 5:
-                    screen.blit(pybag.transform.scale(sprite_sol_5, (case_size, case_size)), (x * case_size, y * case_size))
+                    screen.blit(pygbag.transform.scale(sprite_sol_5, (case_size, case_size)), (x * case_size, y * case_size))
 
                 # Ensuite, dessiner la porte
                 screen.blit(sprite_clef, (x * case_size, y * case_size))
@@ -308,8 +308,8 @@ def bloquer_collision(new_x, new_y, lab, personnage):
 
 # Menu principal
 def menu():
-    pybag.mixer.music.load('Musiques/musique_menu.mp3')
-    pybag.mixer.music.play(-1)
+    pygbag.mixer.music.load('Musiques/musique_menu.mp3')
+    pygbag.mixer.music.play(-1)
 
     while True:
         screen.fill((0, 0, 0))
@@ -318,30 +318,30 @@ def menu():
         screen.blit(quit_button_menu, quit_button_rect)
         screen.blit(levels_button_menu, levels_button_rect)
 
-        for event in pybag.event.get():
-            if event.type == pybag.QUIT:
-                pybag.quit()
+        for event in pygbag.event.get():
+            if event.type == pygbag.QUIT:
+                pygbag.quit()
                 exit()
 
-            if event.type == pybag.MOUSEBUTTONDOWN:
+            if event.type == pygbag.MOUSEBUTTONDOWN:
                 if play_button_rect.collidepoint(event.pos):
                     niveau = 1
                     lab = charger_labyrinthe(niveau)
-                    pybag.mixer.music.stop()
+                    pygbag.mixer.music.stop()
                     play_game(niveau, lab)
 
                 if levels_button_rect.collidepoint(event.pos):
                     choisir_niveau()
 
                 if quit_button_rect.collidepoint(event.pos):
-                    pybag.quit()
+                    pygbag.quit()
                     exit()
-        pybag.display.update()
+        pygbag.display.update()
 
 # Choisir le niveau
 def choisir_niveau():
-    pybag.mixer.music.load('Musiques/musique_menu.mp3')
-    pybag.mixer.music.play(-1)
+    pygbag.mixer.music.load('Musiques/musique_menu.mp3')
+    pygbag.mixer.music.play(-1)
     while True:
         screen.fill((0, 0, 0))
         screen.blit(background_2, (0, 0))
@@ -352,53 +352,53 @@ def choisir_niveau():
         screen.blit(niveau5_button_image, niveau5_button_rect)
         screen.blit(retour_menu_button_image, retour_menu_button_rect)
 
-        for event in pybag.event.get():
-            if event.type == pybag.QUIT:
-                pybag.quit()
+        for event in pygbag.event.get():
+            if event.type == pygbag.QUIT:
+                pygbag.quit()
                 exit()
 
-            if event.type == pybag.MOUSEBUTTONDOWN:
+            if event.type == pygbag.MOUSEBUTTONDOWN:
                 if niveau1_button_rect.collidepoint(event.pos):
                     niveau = 1
                     lab = charger_labyrinthe(niveau)
-                    pybag.mixer.music.stop()
+                    pygbag.mixer.music.stop()
                     play_game(niveau, lab)
 
                 elif niveau2_button_rect.collidepoint(event.pos):
                     niveau = 2
                     lab = charger_labyrinthe(niveau)
-                    pybag.mixer.music.stop()
+                    pygbag.mixer.music.stop()
                     play_game(niveau, lab)
 
                 elif niveau3_button_rect.collidepoint(event.pos):
                     niveau = 3
                     lab = charger_labyrinthe(niveau)
-                    pybag.mixer.music.stop()
+                    pygbag.mixer.music.stop()
                     play_game(niveau, lab)
 
                 elif niveau4_button_rect.collidepoint(event.pos):
                     niveau = 4
                     lab = charger_labyrinthe(niveau)
-                    pybag.mixer.music.stop()
+                    pygbag.mixer.music.stop()
                     play_game(niveau, lab)
 
                 elif niveau5_button_rect.collidepoint(event.pos):
                     niveau = 5
                     lab = charger_labyrinthe(niveau)
-                    pybag.mixer.music.stop()
+                    pygbag.mixer.music.stop()
                     play_game(niveau, lab)
 
                 elif retour_menu_button_rect.collidepoint(event.pos):
                     menu()
 
 
-        pybag.display.update()
+        pygbag.display.update()
 
 # Fonction pour dessiner la vision autour du joueur
 def dessiner_vision(personnage):
-    vision_surface = pybag.Surface((screen.get_width(), screen.get_height()), pybag.SRCALPHA)
+    vision_surface = pygbag.Surface((screen.get_width(), screen.get_height()), pygbag.SRCALPHA)
     vision_surface.fill((0, 0, 0, 255))  # Remplir l'écran de noir avec transparence
-    pybag.draw.circle(vision_surface, (0, 0, 0, 0), (personnage.x + 20, personnage.y + 20), 100)  # Créer un cercle transparent autour du personnage
+    pygbag.draw.circle(vision_surface, (0, 0, 0, 0), (personnage.x + 20, personnage.y + 20), 100)  # Créer un cercle transparent autour du personnage
     screen.blit(vision_surface, (0, 0))  # Appliquer la surface de vision à l'écran
 
 # Liste complète des images d'animation
@@ -427,59 +427,59 @@ vitesse = 10  # vitesse du personnage
 
 def play_game(niveau, lab):
     global perso_anim, clefs_prises
-    personnage = pybag.Rect(55, 55, 40, 40)  # Position de départ du personnage
+    personnage = pygbag.Rect(55, 55, 40, 40)  # Position de départ du personnage
     portes, clefs = dessiner_labyrinthe(lab, niveau)  # Dessiner le labyrinthe et obtenir les portes
     clefs_prises = []
 
     # Lancer la musique selon le niveau
     if niveau == 1:
-        pybag.mixer.music.load('Musiques/musique_level_1.mp3')
+        pygbag.mixer.music.load('Musiques/musique_level_1.mp3')
     elif niveau == 2:
-        pybag.mixer.music.load('Musiques/musique_level_2.mp3')
+        pygbag.mixer.music.load('Musiques/musique_level_2.mp3')
     elif niveau == 3:
-        pybag.mixer.music.load('Musiques/musique_level_3.mp3')
+        pygbag.mixer.music.load('Musiques/musique_level_3.mp3')
     elif niveau == 4:
-        pybag.mixer.music.load('Musiques/musique_level_4.mp3')
+        pygbag.mixer.music.load('Musiques/musique_level_4.mp3')
     elif niveau == 5:
-        pybag.mixer.music.load('Musiques/musique_level_5.mp3')
-    pybag.mixer.music.play(-1)
+        pygbag.mixer.music.load('Musiques/musique_level_5.mp3')
+    pygbag.mixer.music.play(-1)
 
     # Boucle du jeu
     while True:
-        for event in pybag.event.get():
-            if event.type == pybag.QUIT:
-                pybag.quit()
+        for event in pygbag.event.get():
+            if event.type == pygbag.QUIT:
+                pygbag.quit()
                 exit()
 
 
         # Charger les touches et définir la direction
-        keys = pybag.key.get_pressed()
+        keys = pygbag.key.get_pressed()
         new_x, new_y = personnage.x, personnage.y
         personnage_image = perso_images["bas"][0]  # Image par défaut (face vers le bas)
 
         # Choisir l'image et la direction en fonction de la touche pressée
-        if keys[pybag.K_LEFT]:
+        if keys[pygbag.K_LEFT]:
             new_x -= vitesse
             if peut_deplacer(new_x, personnage.y, lab, personnage.width, personnage.height):  # Vérifier collision gauche
                 personnage_image = perso_images["gauche"][perso_anim % len(perso_images["gauche"])]  # Animation gauche
             else:
                 new_x = personnage.x  # Annuler déplacement si collision
 
-        if keys[pybag.K_RIGHT]:
+        if keys[pygbag.K_RIGHT]:
             new_x += vitesse
             if peut_deplacer(new_x, personnage.y, lab, personnage.width, personnage.height):  # Vérifier collision droite
                 personnage_image = perso_images["droite"][perso_anim % len(perso_images["droite"])]  # Animation droite
             else:
                 new_x = personnage.x  # Annuler déplacement si collision
 
-        if keys[pybag.K_UP]:
+        if keys[pygbag.K_UP]:
             new_y -= vitesse
             if peut_deplacer(personnage.x, new_y, lab, personnage.width, personnage.height):  # Vérifier collision haut
                 personnage_image = perso_images["haut"][perso_anim % len(perso_images["haut"])]  # Animation haut
             else:
                 new_y = personnage.y  # Annuler déplacement si collision
 
-        if keys[pybag.K_DOWN]:
+        if keys[pygbag.K_DOWN]:
             new_y += vitesse
             if peut_deplacer(personnage.x, new_y, lab, personnage.width, personnage.height):  # Vérifier collision bas
                 personnage_image = perso_images["bas"][perso_anim % len(perso_images["bas"])]  # Animation bas
@@ -498,7 +498,7 @@ def play_game(niveau, lab):
         for porte_rect in portes:
             if personnage.colliderect(porte_rect):
                 if len(clefs_prises) > 0:  # Vérifie si au moins une clé a été prise
-                    pybag.mixer.music.stop()
+                    pygbag.mixer.music.stop()
                     choisir_niveau()  # Revenir au menu si la porte est atteinte
 
 
@@ -522,12 +522,12 @@ def play_game(niveau, lab):
 
 
         # Mettre à jour l'écran
-        pybag.display.flip()
+        pygbag.display.flip()
 
         # Gérer la sortie et les événements
-        for event in pybag.event.get():
-            if event.type == pybag.QUIT or (event.type == pybag.KEYDOWN and event.key == pybag.K_ESCAPE):
-                pybag.quit()
+        for event in pygbag.event.get():
+            if event.type == pygbag.QUIT or (event.type == pygbag.KEYDOWN and event.key == pygbag.K_ESCAPE):
+                pygbag.quit()
                 exit()
 
         clock.tick(30)  # Limiter la vitesse de l'animation
