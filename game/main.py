@@ -9,7 +9,7 @@ pygame.mixer.init()
 
 # Fenêtre du jeu
 pygame.display.set_caption("THE MAZE")
-screen = pygame.display.set_mode((1200, 800), pygame.RESIZABLE)
+screen = None
 
 # --- CHARGEMENT DES SONS (compatible Web) ---
 effet_clef = pygame.mixer.Sound("audio/effet_sonore_clef.ogg")
@@ -320,6 +320,8 @@ def bloquer_collision(new_x, new_y, lab, personnage):
 # Menu principal
 def menu():
     stop_all_music()
+    global screen
+    screen = pygame.display.set_mode((1200, 800), pygame.RESIZABLE)
     musique_menu.play(-1)
 
     while True:
@@ -426,6 +428,7 @@ clefs_prises = 0
 vitesse = 10  # vitesse du personnage
 
 def play_game(niveau, lab):
+    global screen
     global perso_anim, clefs_prises
     perso_anim = 0
     clefs_prises = []
