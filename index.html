@@ -5,18 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Portfolio – Gaspard Leblic</title>
 
-<!-- Google font moderne -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-
 :root{
     --blue:#3b82f6;
     --dark:#0f172a;
     --light:#f8fafc;
 }
 
-/* RESET */
 *{
     margin:0;
     padding:0;
@@ -29,7 +26,6 @@ body{
     color:#222;
 }
 
-/* HERO */
 header{
     height:100vh;
     background: linear-gradient(135deg,#0f172a,#1e293b);
@@ -67,7 +63,6 @@ header p{
     transform:translateY(-3px);
 }
 
-/* SECTIONS */
 section{
     max-width:1100px;
     margin:80px auto;
@@ -80,7 +75,6 @@ h2{
     color:var(--dark);
 }
 
-/* CARDS */
 .grid{
     display:grid;
     grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
@@ -99,7 +93,6 @@ h2{
     transform:translateY(-5px);
 }
 
-/* SKILLS */
 .skill{
     display:inline-block;
     padding:8px 12px;
@@ -109,14 +102,12 @@ h2{
     font-size:14px;
 }
 
-/* TIMELINE */
 .timeline-item{
     border-left:3px solid var(--blue);
     padding-left:15px;
     margin-bottom:20px;
 }
 
-/* FOOTER */
 footer{
     background:var(--dark);
     color:white;
@@ -124,7 +115,6 @@ footer{
     padding:25px;
 }
 
-/* animation apparition */
 .fade{
     opacity:0;
     transform:translateY(30px);
@@ -135,7 +125,6 @@ footer{
     opacity:1;
     transform:translateY(0);
 }
-
 </style>
 </head>
 
@@ -152,8 +141,8 @@ footer{
     <h2>À propos</h2>
     <div class="card">
         Passionné par l’informatique et la création numérique, je développe des projets
-        personnels en Python et web. J’ai notamment conçu un jeu vidéo complet en Pygame.
-        Je souhaite développer mes compétences.
+        personnels en Python et web. J’ai notamment conçu un petit jeu vidéo en Python
+        (THE MAZE), que je présente brièvement dans mes projets.
     </div>
 </section>
 
@@ -177,13 +166,10 @@ footer{
     <div class="grid">
         <div class="card">
             <h3>🎮 Jeu vidéo Python</h3>
-            Développement complet avec Pygame : gameplay, collisions, interface,
-            logique orientée objet.
+            Développement complet d’un jeu en Pygame : gameplay, collisions, animations,
+            interface et logique de jeu.
             <br><br>
-            <a href="game/index.html" target="_blank" rel="noopener">
-                🎮 Jouer à THE MAZE
-            </a>
-
+            <i>(Le jeu n’est pas disponible en ligne, mais il est présenté dans mon dossier Parcoursup.)</i>
         </div>
 
         <div class="card">
@@ -196,15 +182,29 @@ footer{
 
 <section class="fade">
     <h2>Expériences</h2>
+
     <div class="timeline-item">
-        <b>Café des Arcades</b> – Employé polyvalent (service, encaissement)
+        <b><a href="https://www.tripadvisor.fr/Restaurant_Review-g187244-d1335253-Reviews-Cafe_des_Arcades-Valbonne_French_Riviera_Cote_d_Azur_Provence_Alpes_Cote_d_Azur.html" target="_blank">Café des Arcades</a></b>
+        – Employé polyvalent (service, encaissement)
     </div>
+
     <div class="timeline-item">
         <b>Babysitting bilingue / Aide aux devoirs</b> – Français / Anglais
     </div>
+
     <div class="timeline-item">
-        <b>Stages Subvision & Marineland</b>
+        <b><a href="https://subvision.fr/" target="_blank">Subvision</a></b> & 
+        <b><a href="https://www.marineland.fr/" target="_blank">Marineland</a></b>
+        – Stages d’observation
     </div>
+
+    <div class="timeline-item">
+        <b>Formation maritime STCW</b> – 
+        <a href="https://www.zephyr-yachting.com/crew-training/stcw-basic-training/" target="_blank">Voir la formation</a>
+        <br>
+        Certification obtenue + permis bateau et jetski passés dans la même entreprise.
+    </div>
+
 </section>
 
 
@@ -212,8 +212,7 @@ footer{
     <h2>Contact</h2>
     <div class="card">
         📧 gaspard.leblic07@gmail.com<br>
-        🚗 Permis B – véhiculé<br>
-        🛟 Certification maritime STCW (Standards of Training, Certification and Watchkeeping)<br><br>
+        🚗 Permis B – véhiculé<br><br>
         <a href="CV.pdf" class="btn">Télécharger mon CV</a>
     </div>
 </section>
@@ -225,7 +224,6 @@ footer{
 
 
 <script>
-/* animation au scroll */
 const faders = document.querySelectorAll(".fade");
 window.addEventListener("scroll", () => {
     faders.forEach(el => {
