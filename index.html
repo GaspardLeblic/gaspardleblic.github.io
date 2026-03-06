@@ -186,12 +186,13 @@ section{
     box-shadow:6px 6px 0px black;
     margin-bottom:25px;
     font-size:18px;
-    transition:0.25s ease; /* transition fluide */
+    transition:0.25s ease;
+    transform:translateY(0);
 }
 
 .timeline-item:hover{
-    transform:scale(1.05); /* zoom */
-    box-shadow:10px 10px 0px black; /* ombre renforcée */
+    transform:translateY(-6px) scale(1.03);
+    box-shadow:10px 10px 0px black;
 }
 
 /* LINKS */
@@ -226,6 +227,29 @@ footer{
     opacity:1;
     transform:translateY(0) rotateX(0deg);
 }
+
+/* BOUTON CV VISUEL */
+.cv-button{
+    display:inline-block;
+    margin-top:15px;
+    padding:12px 20px;
+    background:var(--blue-night);
+    color:white;
+    border:4px solid black;
+    border-radius:8px;
+    font-weight:700;
+    text-decoration:none;
+    box-shadow:6px 6px 0px black;
+    transition:0.25s ease;
+}
+
+.cv-button:hover{
+    transform:scale(1.08);
+    background:var(--red-cold);
+    box-shadow:10px 10px 0px black, 0 0 15px rgba(215,38,56,0.6);
+    color:white;
+}
+
 
 </style>
 </head>
@@ -287,7 +311,7 @@ footer{
     <h2>📌 Expériences</h2>
 
     <div class="timeline-item">
-        🧑‍🍳 <b><a href="https://www.tripadvisor.fr/Restaurant_Review-g187244-d1335253-Reviews-Cafe_des_Arcades-Valbonne" target="_blank">Café des Arcades</a></b>  
+        🧑‍🍳 <b><a href="https://cafearcades.fr/" target="_blank">Café des Arcades</a></b>  
         Employé polyvalent (service, encaissement)
     </div>
 
@@ -296,7 +320,7 @@ footer{
     </div>
 
     <div class="timeline-item">
-        🐬 <b><a href="https://subvision.fr/" target="_blank">Subvision</a></b> &  
+        🐬 <b><a href="https://subvision-plongee.com/" target="_blank">Subvision</a></b> &  
         <b><a href="https://www.marineland.fr/" target="_blank">Marineland</a></b>  
         Stages d’observation
     </div>
@@ -315,7 +339,8 @@ footer{
     <div class="card">
         📧 gaspard.leblic07@gmail.com<br>
         🚗 Permis B – véhiculé<br><br>
-        <a href="CV.pdf">📄 Télécharger mon CV</a>
+        <a class="cv-button" href="CV.pdf" download>📄 Télécharger mon CV</a>
+
     </div>
 </section>
 
