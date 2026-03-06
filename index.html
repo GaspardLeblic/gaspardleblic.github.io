@@ -5,225 +5,328 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Portfolio – Gaspard Leblic</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
 
 <style>
+
+/* PALETTE FROIDE AMÉLIORÉE */
 :root{
     --blue:#3b82f6;
+    --green-turquoise:#000000;
+    --violet:#8b5cf6;
     --dark:#0f172a;
-    --light:#f8fafc;
+    --light:#e6e9ef; /* nouveau fond doux */
+    --red-cold:#d72638; /* rouge froid */
+    --blue-night:#1e3a8a; /* remplace le violet illisible */
 }
 
+/* RESET */
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:"Poppins", sans-serif;
+    font-family:"Montserrat", sans-serif;
 }
 
 body{
     background:var(--light);
-    color:#222;
+    color:var(--dark);
 }
 
+/* HEADER ANIMÉ */
 header{
     height:100vh;
-    background: linear-gradient(135deg,#0f172a,#1e293b);
-    color:white;
+    background:linear-gradient(135deg,var(--blue),var(--violet),var(--green-turquoise));
+    background-size:400% 400%;
+    animation:gradientMove 12s ease infinite;
     display:flex;
-    flex-direction:column;
     justify-content:center;
     align-items:center;
     text-align:center;
     padding:20px;
+    color:white;
+    flex-direction:column;
+}
+
+/* ANIMATION DU FOND */
+@keyframes gradientMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* LOGO GL */
+.logo{
+    font-size:70px;
+    font-weight:800;
+    padding:20px 40px;
+    border:5px solid black;
+    border-radius:15px;
+    background:white;
+    color:var(--dark);
+    box-shadow:10px 10px 0px black;
+    display:inline-block;
+    transform:scale(0) rotate(-20deg);
+    animation:logoPop 1.2s ease forwards;
+}
+
+/* ANIMATION LOGO */
+@keyframes logoPop{
+    0%{transform:scale(0) rotate(-20deg);}
+    60%{transform:scale(1.15) rotate(3deg);}
+    100%{transform:scale(1) rotate(0deg);}
 }
 
 header h1{
-    font-size:56px;
-    font-weight:600;
+    font-size:60px;
+    font-weight:800;
+    margin-top:30px;
+    text-shadow:4px 4px 0px rgba(0,0,0,0.25);
+    animation:titleSlide 1.2s ease forwards;
+    opacity:0;
+}
+
+/* ANIMATION TITRE */
+@keyframes titleSlide{
+    0%{transform:translateY(40px); opacity:0;}
+    100%{transform:translateY(0); opacity:1;}
 }
 
 header p{
-    margin-top:15px;
-    opacity:0.85;
-    font-size:20px;
+    margin-top:20px;
+    font-size:22px;
+    font-weight:500;
+    opacity:0;
+    animation:fadeIn 1.6s ease forwards;
 }
 
-.btn{
-    margin-top:30px;
-    padding:12px 24px;
-    background:var(--blue);
-    border-radius:8px;
-    color:white;
-    text-decoration:none;
-    transition:0.3s;
+@keyframes fadeIn{
+    0%{opacity:0;}
+    100%{opacity:1;}
 }
 
-.btn:hover{
-    transform:translateY(-3px);
+/* TITRES DE SECTION */
+h2{
+    font-size:40px;
+    font-weight:800;
+    margin-bottom:30px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    color:var(--red-cold); /* touche de rouge froid */
+    opacity:0;
+    animation:sectionTitle 1s ease forwards;
 }
 
+@keyframes sectionTitle{
+    0%{transform:translateX(-40px); opacity:0;}
+    100%{transform:translateX(0); opacity:1;}
+}
+
+/* SECTIONS */
 section{
     max-width:1100px;
     margin:80px auto;
     padding:0 20px;
 }
 
-h2{
-    font-size:32px;
-    margin-bottom:30px;
-    color:var(--dark);
-}
-
-.grid{
-    display:grid;
-    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
-}
-
+/* CARTES NEO-BRUTALISM */
 .card{
     background:white;
     padding:25px;
-    border-radius:16px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.08);
-    transition:0.3s;
+    border-radius:12px;
+    border:4px solid black;
+    box-shadow:8px 8px 0px black;
+    transition:0.2s;
+    opacity:0;
+    transform:rotateX(20deg) translateY(40px);
+    animation:cardDrop 1s ease forwards;
+}
+
+@keyframes cardDrop{
+    0%{opacity:0; transform:rotateX(20deg) translateY(40px);}
+    100%{opacity:1; transform:rotateX(0deg) translateY(0);}
 }
 
 .card:hover{
-    transform:translateY(-5px);
+    transform:translate(-4px,-4px);
+    box-shadow:12px 12px 0px black;
 }
 
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+/* SKILLS */
 .skill{
     display:inline-block;
-    padding:8px 12px;
+    padding:10px 14px;
     margin:6px;
-    border-radius:8px;
-    background:#e2e8f0;
-    font-size:14px;
+    border-radius:6px;
+    background:var(--green-turquoise);
+    border:3px solid black;
+    font-weight:600;
+    color:#ffffff
 }
 
+.skill:hover{
+    box-shadow:0 0 12px rgba(75, 46, 131, 0.9), 0 0 20px rgba(75, 46, 131, 0.6);
+    transform:scale(1.05);
+}
+
+/* TIMELINE */
 .timeline-item{
-    border-left:3px solid var(--blue);
-    padding-left:15px;
-    margin-bottom:20px;
+    background:var(--blue-night);
+    color:white;
+    padding:20px;
+    border-radius:10px;
+    border:4px solid black;
+    box-shadow:6px 6px 0px black;
+    margin-bottom:25px;
+    font-size:18px;
+    transition:0.25s ease; /* transition fluide */
 }
 
+.timeline-item:hover{
+    transform:scale(1.05); /* zoom */
+    box-shadow:10px 10px 0px black; /* ombre renforcée */
+}
+
+/* LINKS */
+a{
+    color:var(--green-turquoise);
+    font-weight:600;
+    text-decoration:none;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+/* FOOTER */
 footer{
-    background:var(--dark);
+    background:black;
     color:white;
     text-align:center;
     padding:25px;
+    margin-top:80px;
+    font-weight:600;
 }
 
+/* SCROLL ANIMATION */
 .fade{
     opacity:0;
-    transform:translateY(30px);
+    transform:translateY(40px) rotateX(15deg);
     transition:0.8s;
 }
 
 .fade.visible{
     opacity:1;
-    transform:translateY(0);
+    transform:translateY(0) rotateX(0deg);
 }
+
 </style>
 </head>
 
 <body>
 
 <header>
+    <div class="logo">GL</div>
     <h1>Gaspard Leblic</h1>
-    <p>Étudiant en Terminale au Centre Internationnal de Valbonne <br>• Section Américaine • Spécialités NSI & Maths • Développeur junior</p>
-    <a href="#projets" class="btn">Voir mes projets ↓</a>
+    <p>Étudiant au Centre International de Valbonne • Développeur junior • Créatif • Section Américaine • Spécialités NSI et Maths</p>
 </header>
 
 
 <section class="fade">
-    <h2>À propos</h2>
+    <h2>💡 À propos</h2>
     <div class="card">
-        Passionné par l’informatique et la création numérique, je développe des projets
-        personnels en Python et web. J’ai notamment conçu un petit jeu vidéo en Python
-        (THE MAZE), que je présente brièvement dans mes projets.
+        Passionné par l’informatique, la création numérique et les projets techniques,
+        je développe des applications et des jeux en Python.  
+        J’ai notamment conçu un petit jeu vidéo complet (THE MAZE) en Pygame 🎮.
     </div>
 </section>
 
 
 <section class="fade">
-    <h2>Compétences</h2>
+    <h2>⚡ Compétences</h2>
     <div class="card">
-        <span class="skill">Python</span>
-        <span class="skill">HTML/CSS</span>
-        <span class="skill">Algorithmique</span>
-        <span class="skill">GitHub</span>
-        <span class="skill">Montage vidéo</span>
-        <span class="skill">Anglais courant</span>
-        <span class="skill">Travail d'équipe</span>
+        <span class="skill">Python 🐍</span>
+        <span class="skill">HTML/CSS 🌐</span>
+        <span class="skill">Algorithmique 🧠</span>
+        <span class="skill">GitHub 💻</span>
+        <span class="skill">Montage vidéo 🎬</span>
+        <span class="skill">Anglais courant </span>
+        <span class="skill">Travail d'équipe 🤝</span>
     </div>
 </section>
 
 
 <section id="projets" class="fade">
-    <h2>Projets</h2>
+    <h2>🚀 Projets</h2>
     <div class="grid">
+
         <div class="card">
-            <h3>🎮 Jeu vidéo Python</h3>
-            Développement complet d’un jeu en Pygame : gameplay, collisions, animations,
-            interface et logique de jeu.
+            <h3>🎮 THE MAZE – Jeu Python</h3>
+            Jeu complet développé en Pygame : animations, collisions, interface, logique de jeu.
             <br><br>
-            <i>(Le jeu n’est pas disponible en ligne, mais il est présenté dans mon dossier Parcoursup.)</i>
+            <i>(Non disponible en ligne, mais présenté dans mon dossier Parcoursup.)</i>
         </div>
 
         <div class="card">
             <h3>🌐 Portfolio web</h3>
-            Site personnel codé en HTML/CSS et hébergé via GitHub Pages.
+            Site personnel moderne, codé en HTML/CSS et hébergé via GitHub Pages.
         </div>
+
     </div>
 </section>
 
 
 <section class="fade">
-    <h2>Expériences</h2>
+    <h2>📌 Expériences</h2>
 
     <div class="timeline-item">
-        <b><a href="https://www.tripadvisor.fr/Restaurant_Review-g187244-d1335253-Reviews-Cafe_des_Arcades-Valbonne_French_Riviera_Cote_d_Azur_Provence_Alpes_Cote_d_Azur.html" target="_blank">Café des Arcades</a></b>
-        – Employé polyvalent (service, encaissement)
+        🧑‍🍳 <b><a href="https://www.tripadvisor.fr/Restaurant_Review-g187244-d1335253-Reviews-Cafe_des_Arcades-Valbonne" target="_blank">Café des Arcades</a></b>  
+        Employé polyvalent (service, encaissement)
     </div>
 
     <div class="timeline-item">
-        <b>Babysitting bilingue / Aide aux devoirs</b> – Français / Anglais
+        👶 Babysitting bilingue / Aide aux devoirs – Français / Anglais
     </div>
 
     <div class="timeline-item">
-        <b><a href="https://subvision.fr/" target="_blank">Subvision</a></b> & 
-        <b><a href="https://www.marineland.fr/" target="_blank">Marineland</a></b>
-        – Stages d’observation
+        🐬 <b><a href="https://subvision.fr/" target="_blank">Subvision</a></b> &  
+        <b><a href="https://www.marineland.fr/" target="_blank">Marineland</a></b>  
+        Stages d’observation
     </div>
 
     <div class="timeline-item">
-        <b>Formation maritime STCW</b> – 
-        <a href="https://www.zephyr-yachting.com/crew-training/stcw-basic-training/" target="_blank">Voir la formation</a>
-        <br>
-        Certification obtenue + permis bateau et jetski passés dans la même entreprise.
+        🚤 <b>Formation maritime STCW</b>  
+        <a href="https://www.zephyr-yachting.com/crew-training/stcw-basic-training/" target="_blank">Voir la formation</a>  
+        Certification obtenue + permis bateau et jetski dans la même entreprise.
     </div>
 
 </section>
 
 
 <section class="fade">
-    <h2>Contact</h2>
+    <h2>📬 Contact</h2>
     <div class="card">
         📧 gaspard.leblic07@gmail.com<br>
         🚗 Permis B – véhiculé<br><br>
-        <a href="CV.pdf" class="btn">Télécharger mon CV</a>
+        <a href="CV.pdf">📄 Télécharger mon CV</a>
     </div>
 </section>
 
 
 <footer>
-© 2026 – Gaspard Leblic
+Portfolio créé par Gaspard Leblic – 2026 
 </footer>
 
 
 <script>
+/* animation au scroll */
 const faders = document.querySelectorAll(".fade");
 window.addEventListener("scroll", () => {
     faders.forEach(el => {
