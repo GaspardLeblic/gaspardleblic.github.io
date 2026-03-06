@@ -250,6 +250,19 @@ footer{
     color:white;
 }
 
+.scroll-arrow{
+    margin-top:40px;
+    width:260px;
+    height:260px;
+    animation:arrowBounce 1.5s infinite ease-in-out;
+    cursor:pointer;
+}
+
+@keyframes arrowBounce{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(26px);}
+    100%{transform:translateY(0);}
+}
 
 </style>
 </head>
@@ -260,6 +273,63 @@ footer{
     <div class="logo">GL</div>
     <h1>Gaspard Leblic</h1>
     <p>Étudiant au Centre International de Valbonne • Développeur junior • Créatif • Section Américaine • Spécialités NSI et Maths</p>
+    
+    <div class="scroll-arrow">
+    <svg width="260" height="260" viewBox="0 0 200 200">
+
+        <!-- === PARAMÈTRES À MODIFIER === -->
+        <!-- W = largeur tige / B = bombé / T = top / P = pointe / V = largeur V -->
+        <!-- Mets les valeurs que tu veux -->
+        <script>
+            const W = 25;   // largeur tige
+            const B = 15;   // bombé
+            const T = 25;   // hauteur haut
+            const P = 190;  // profondeur pointe
+            const V = 50;   // largeur V
+        </script>
+
+        <!-- Ombre GL -->
+        <path id="shadow"
+            fill="none"
+            stroke="black"
+            stroke-width="14"
+            stroke-linejoin="round"
+            stroke-linecap="round"
+            transform="translate(6,6)"
+        />
+
+        <!-- Flèche principale -->
+        <path id="arrow"
+            fill="white"
+            stroke="black"
+            stroke-width="5"
+            stroke-linejoin="round"
+            stroke-linecap="round"
+        />
+
+        <script>
+            const cx = 100; // centre X
+
+            const path = `
+                M ${cx - W} ${T}
+                L ${cx + W} ${T}
+                L ${cx + W} 130
+                L ${cx + V} 130
+                L ${cx} ${P}
+                L ${cx - V} 130
+                L ${cx - W} 130
+                Z
+            `;
+
+
+            document.getElementById("arrow").setAttribute("d", path);
+            document.getElementById("shadow").setAttribute("d", path);
+        </script>
+
+    </svg>
+</div>
+
+
 </header>
 
 
@@ -295,7 +365,6 @@ footer{
             <h3>🎮 THE MAZE – Jeu Python</h3>
             Jeu complet développé en Pygame : animations, collisions, interface, logique de jeu.
             <br><br>
-            <i>(Non disponible en ligne, mais présenté dans mon dossier Parcoursup.)</i>
         </div>
 
         <div class="card">
@@ -337,7 +406,7 @@ footer{
 <section class="fade">
     <h2>📬 Contact</h2>
     <div class="card">
-        📧 gaspard.leblic07@gmail.com<br>
+        📧 <a href="mailto:gaspard.leblic07@gmail.com">gaspard.leblic07@gmail.com</a><br><br>
         🚗 Permis B – véhiculé<br><br>
         <a class="cv-button" href="CV.pdf" target="_blank">📄 Télécharger mon CV</a>
 
